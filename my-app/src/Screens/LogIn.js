@@ -1,6 +1,7 @@
 // src/LogIn.js
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const LogIn = () => {
   const [formData, setFormData] = useState({
@@ -9,6 +10,7 @@ const LogIn = () => {
   });
 
   const [message, setMessage] = useState('');
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({
@@ -21,11 +23,29 @@ const LogIn = () => {
     e.preventDefault();
     try {
       const response = await axios.post('http://localhost:5000/api/login', formData);
+  
+      console.log('API Response:', response.data); // Log the entire response
+  
+      const { Token, user } = response.data;
+      const token = response.data.authToken      ;
+  
+      localStorage.setItem('token', token);
+      localStorage.setItem('user', JSON.stringify(user));
+      
+
+      console.log("....>>>",token);
+
+
+      
+    
       setMessage('LogIn successful!');
+      navigate('/');
+      
     } catch (error) {
       setMessage('Error logging in.');
     }
   };
+  
 
   return (
     <div className="container mt-5">

@@ -1,8 +1,11 @@
 // src/Sign.js
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Sign = () => {
+
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -17,6 +20,8 @@ const Sign = () => {
       ...formData,
       [e.target.name]: e.target.value
     });
+    console.log(formData);
+    
   };
 
   const handleSubmit = async (e) => {
@@ -24,6 +29,7 @@ const Sign = () => {
     try {
       const response = await axios.post('http://localhost:5000/api/createuser', formData);
       setMessage('User created successfully!');
+      navigate('/login');
     } catch (error) {
       setMessage('Error creating user.');
     }

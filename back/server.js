@@ -14,11 +14,15 @@ app.use(express.json());
 let corsOptions = { 
     origin : ['http://localhost:3000'], 
  } 
-   
- app.use(cors(corsOptions)) 
+
 
 // app.use(cors());
+ app.use(cors(corsOptions)) 
+
 app.use('/api',require('./router/createUser.js'))
+app.use('/api',require('./router/DisplayData.js'))
+
+
 
 app.get('/',(rer,res)=>{
     res.send("HIIIIII")
