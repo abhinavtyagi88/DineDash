@@ -4,7 +4,7 @@ const { body, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv');
-const axios = require('axios');
+// const axios = require('axios');
 
 dotenv.config();
 
@@ -102,28 +102,29 @@ router.post('/getuser', fetch, async (req, res) => {
 });
 
 // Get location based on latitude and longitude
-router.post('/getlocation', async (req, res) => {
-    const { latlong } = req.body;
 
-    if (!latlong || !latlong.lat || !latlong.long) {
-        return res.status(400).json({ error: "Latitude and longitude are required." });
-    }
+// router.post('/getlocation', async (req, res) => {
+//     const { latlong } = req.body;
 
-    try {
-        const { lat, long } = latlong;
-        const response = await axios.get(`https://api.opencagedata.com/geocode/v1/json?q=${lat}+${long}&key=${process.env.GEO_API_KEY}`);
+//     if (!latlong || !latlong.lat || !latlong.long) {
+//         return res.status(400).json({ error: "Latitude and longitude are required." });
+//     }
 
-        if (!response.data || !response.data.results || !response.data.results[0]) {
-            return res.status(404).json({ error: "Location not found." });
-        }
+//     try {
+//         const { lat, long } = latlong;
+//         const response = await axios.get(`https://api.opencagedata.com/geocode/v1/json?q=${lat}+${long}&key=${process.env.GEO_API_KEY}`);
 
-        const { village, county, state_district, state, postcode } = response.data.results[0].components;
-        const location = `${village}, ${county}, ${state_district}, ${state} ${postcode}`;
-        res.json({ location });
-    } catch (err) {
-        console.error(err.message);
-        res.status(500).json({ error: "Failed to fetch location data." });
-    }
-});
+//         if (!response.data || !response.data.results || !response.data.results[0]) {
+//             return res.status(404).json({ error: "Location not found." });
+//         }
+
+//         const { village, county, state_district, state, postcode } = response.data.results[0].components;
+//         const location = `${village}, ${county}, ${state_district}, ${state} ${postcode}`;
+//         res.json({ location });
+//     } catch (err) {
+//         console.error(err.message);
+//         res.status(500).json({ error: "Failed to fetch location data." });
+//     }
+// });
 
 module.exports = router;
