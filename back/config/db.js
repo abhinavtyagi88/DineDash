@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 require('dotenv').config();
 
-// Replace this with your MongoDB Atlas connection string
+
 const uri = process.env.DBURI;
 
 async function connectToMongoDB() {
@@ -11,7 +11,7 @@ async function connectToMongoDB() {
 
         console.log("DATABASE CONNECTED");
 
-        // Fetch  data from the collection
+        
         const fetchData = await mongoose.connection.db.collection("food_items").find({}).toArray();
         
 
@@ -24,10 +24,6 @@ async function connectToMongoDB() {
         
         // console.log(category);
         // console.log(fetchData);
-
-        
-
-
 
     } catch (error) {
         console.error("Error connecting to MongoDB Atlas", error);
