@@ -22,7 +22,7 @@ async function connectToMongoDB() {
 
         global.category = category;
         
-        console.log(category);
+        // console.log(category);
         // console.log(fetchData);
 
         

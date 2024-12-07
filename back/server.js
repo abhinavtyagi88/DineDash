@@ -34,9 +34,8 @@ port = process.env.PORT;
 app.listen(port,(err)=>{
     if(!err){
         console.log("Server is Successfully Runing ",port);
-
+        
     }
-
     else{
         console.log(err);
     }
