@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import Carousel from '../components/Carousel';
 import Card from '../components/Card';
-
+import './HomePage.css'
+import './HomePage.css'; 
 
 
 function HomePage() {
@@ -54,19 +55,17 @@ function HomePage() {
       <Carousel />
       <br></br>
 
-       <div>
-        hello
-       </div>
+
       
        <div className='container'> 
          {
            foodCat.map((data) => {
              return (
                <div key={data._id} className='row mb-3  '>
-                 <h4 className='fs-3 m-4 '>
+                 <h4 className='fs-2 m-2 '>
                    {data.category}
                  </h4>
-                 <hr id="hr-success" style={{ height: "4px", backgroundImage: "-webkit-linear-gradient(left, rgb(0, 255, 137), rgb(0, 0, 0))" }} />
+                 <hr id="hr" style={{ height: "4px", backgroundImage: "-webkit-linear-gradient(left, rgb(9, 98, 8, 1), rgb(0, 0, 0))" }} />
                  
                  {
                    foodItems
@@ -84,8 +83,69 @@ function HomePage() {
              )
            })
          }
+        
        </div>
-      <footer>This is Footer</footer>
+
+       <footer class="footer" >
+    <div class="container">
+      <div class="row">
+        {/* <!-- Opening Hours --> */}
+        <div class="col-md-3">
+          <h5>Opening Hours</h5>
+          <ul class="list-unstyled">
+            <li>Monday: 9:00 - 22:00</li>
+            <li>Tuesday: 9:00 - 22:00</li>
+            <li>Wednesday: 9:00 - 22:00</li>
+            <li>Thursday: 9:00 - 22:00</li>
+            <li>Friday: 9:00 - 00:00</li>
+            <li>Saturday: 9:00 - 00:00</li>
+            <li>Sunday: 9:00 - 18:00</li>
+          </ul>
+        </div>
+
+        {/* <!-- Locations --> */}
+        <div class="col-md-3">
+          <h5>Locations</h5>
+          <ul class="list-unstyled">
+            <li>Location 1: 944 Glenholme Court, Tiffin, OH 44883</li>
+            <li>Location 2: 921 Schoolhouse Court, New Bern, NC 28560</li>
+          </ul>
+        </div>
+
+        {/* <!-- Menu --> */}
+        <div class="col-md-3">
+          <h5>Menu</h5>
+          <ul class="list-unstyled">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Reservation</a></li>
+            <li><a href="#">Our Pizza</a></li>
+            <li><a href="#">Your Order</a></li>
+            <li><a href="#">Checkout</a></li>
+          </ul>
+        </div>
+
+        {/* <!-- Contact --> */}
+        <div class="col-md-3">
+          <h5>Contact</h5>
+          <ul class="list-unstyled">
+            <li>Phone: 054 / 9923</li>
+            <li>Email: <a href="mailto:orders@pizzamuestra.com">orders@pizzamuestra.com</a></li>
+            <li>Follow us:</li>
+            <div class="social-icons">
+              <a href="#"><i class="bi bi-facebook"></i></a>
+              <a href="#"><i class="bi bi-twitter"></i></a>
+              <a href="#"><i class="bi bi-instagram"></i></a>
+            </div>
+          </ul>
+        </div>
+      </div>
+
+      {/* <!-- Footer Copyright --> */}
+      <div class="text-center mt-4">
+        <p>&copy; 2018 Food. Built using WordPress and Mesmerize Theme.</p>
+      </div>
+    </div>
+  </footer>
     </>
   );
 }

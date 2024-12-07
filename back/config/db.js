@@ -9,7 +9,7 @@ async function connectToMongoDB() {
         // Connect to MongoDB
         await mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
-        console.log("CONNECTED");
+        console.log("DATABASE CONNECTED");
 
         // Fetch  data from the collection
         const fetchData = await mongoose.connection.db.collection("food_items").find({}).toArray();
@@ -22,7 +22,7 @@ async function connectToMongoDB() {
 
         global.category = category;
         
-        // console.log(category);
+        console.log(category);
         // console.log(fetchData);
 
         

@@ -1,10 +1,7 @@
-// src/Sign.js
 import React, { useState } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 const Sign = () => {
-
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: '',
@@ -12,84 +9,144 @@ const Sign = () => {
     password: '',
     location: ''
   });
-
   const [message, setMessage] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     });
-    console.log(formData);
-    
+  };
+
+  const validateForm = () => {
+    const { username, email, password, location } = formData;
+    if (!username || !email || !password || !location) {
+      setMessage('All fields are required.');
+      return false;
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setMessage('Please enter a valid email address.');
+      return false;
+    }
+    if (password.length < 6) {
+      setMessage('Password must be at least 6 characters.');
+      return false;
+    }
+    return true;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!validateForm()) return;
+
+    setIsLoading(true);
     try {
-      const response = await axios.post('http://localhost:5000/api/createuser', formData);
-      setMessage('User created successfully!');
-      navigate('/login');
+      const response = await fetch(
+        process.env.REACT_APP_API_URL || 'http://localhost:5000/api/createuser',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formData)
+        }
+      );
+
+      const data = await response.json();
+
+      console.log(formData);
+      
+      console.log(response);
+      
+
+      if (response.ok) {
+        setMessage('User created successfully!');
+        navigate('/login');
+      } else {
+        setMessage(data.error || 'Error creating user.');
+      }
     } catch (error) {
+      console.error(error);
       setMessage('Error creating user.');
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
     <div className="container mt-5">
-      <h2 className="text-center mb-4">Sign Up</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="mb-3">
-          <label htmlFor="username" className="form-label">Username:</label>
-          <input
-            type="text"
-            id="username"
-            name="username"
-            className="form-control"
-            value={formData.username}
-            onChange={handleChange}
-            required
-          />
+      <div className="row justify-content-center">
+        <div className="col-md-6">
+          <div className="card shadow-lg">
+            <div className="card-body">
+              <h2 className="text-center mb-4">Welcome to <span className="text-primary">DINEDASH</span></h2>
+              <p className="text-center mb-4">
+                Join DINEDASH to explore the best dining experiences tailored just for you!
+              </p>
+              <form onSubmit={handleSubmit} noValidate>
+                <div className="mb-3">
+                  <label htmlFor="username" className="form-label">Username:</label>
+                  <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    className="form-control"
+                    value={formData.username}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                <div className="mb-3">
+                  <label htmlFor="email" className="form-label">Email:</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    className="form-control"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                <div className="mb-3">
+                  <label htmlFor="password" className="form-label">Password:</label>
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    className="form-control"
+                    value={formData.password}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                <div className="mb-3">
+                  <label htmlFor="location" className="form-label">Location:</label>
+                  <input
+                    type="text"
+                    id="location"
+                    name="location"
+                    className="form-control"
+                    value={formData.location}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                <button type="submit" className="btn btn-primary w-100" disabled={isLoading}>
+                  {isLoading ? 'Signing Up...' : 'Sign Up'}
+                </button>
+              </form>
+              {message && (
+                <p className={`mt-3 text-center ${message.includes('Error') ? 'text-danger' : 'text-success'}`}>
+                  {message}
+                </p>
+              )}
+            </div>
+          </div>
         </div>
-        <div className="mb-3">
-          <label htmlFor="email" className="form-label">Email:</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            className="form-control"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="password" className="form-label">Password:</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            className="form-control"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="location" className="form-label">Location:</label>
-          <input
-            type="text"
-            id="location"
-            name="location"
-            className="form-control"
-            value={formData.location}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <button type="submit" className="btn btn-primary w-100">Sign Up</button>
-      </form>
-      {message && <p className="mt-3 text-center">{message}</p>}
+      </div>
     </div>
   );
 };
