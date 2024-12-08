@@ -1,154 +1,226 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
-import Carousel from '../components/Carousel';
 import Card from '../components/Card';
-import './HomePage.css'
-import './HomePage.css'; 
-
+import './HomePage.css'; // Custom CSS for the homepage
+import "../components/Carousel.css"; // Import Carousel CSS for custom styles
 
 function HomePage() {
-  // Correct state declaration using useState
   const [foodCat, setFoodCat] = useState([]);
   const [foodItems, setFoodItem] = useState([]);
-  const [search, setSearch] = useState('')
+  const [search, setSearch] = useState('');
 
-  // Data fetching function
   const loadData = async () => {
     try {
-
-      let token  = localStorage.getItem('token');
-      let response = await fetch("http://localhost:5000/api/foodData", {
+      let token = localStorage.getItem('token');
+      let response = await fetch("https://dinedash-64ou.onrender.com/api/foodData", {
         method: "GET",
         headers: {
           'Authorization': `${token}`,
           'Content-Type': 'application/json'
         }
       });
-      
-      // Await the response and convert it to JSON
+
       response = await response.json();
-
-      console.log(response);
-
-      setFoodItem(response[0] || []); 
+      setFoodItem(response[0] || []);
       setFoodCat(response[1] || []);
-
-    
-
-
     } catch (error) {
       console.log("Error fetching food data:", error);
     }
   };
 
-
- 
-
-  // Using useEffect to call loadData when the component mounts
   useEffect(() => {
-   loadData();
-  }, []); // Empty dependency array ensures this runs once on mount
+    loadData();
+  }, []);
+
+  // Handle search query input
+  const handleSearchChange = (e) => {
+    setSearch(e.target.value);
+  };
 
   return (
     <>
       <Navbar />
-      <Carousel />
-      <br></br>
-
-
       
-       <div className='container'> 
-         {
-           foodCat.map((data) => {
-             return (
-               <div key={data._id} className='row mb-3  '>
-                 <h4 className='fs-2 m-2 '>
-                   {data.category}
-                 </h4>
-                 <hr id="hr" style={{ height: "4px", backgroundImage: "-webkit-linear-gradient(left, rgb(9, 98, 8, 1), rgb(0, 0, 0))" }} />
-                 
-                 {
-                   foodItems
-                     .filter(items => 
-                       items.category === data.category && 
-                       items.name.toLowerCase().includes(search.toLowerCase())
-                     )
-                     .map(filterItems => (
-                       <div key={filterItems.id} className='col-12 col-md-6 col-lg-3'>
-                         <Card className="p-2"  foodItem={filterItems} options={filterItems.options[0]} />
-                       </div>
-                     ))
-           }
-               </div>
-             )
-           })
-         }
-        
-       </div>
-
-       <footer class="footer" >
-    <div class="container">
-      <div class="row">
-        {/* <!-- Opening Hours --> */}
-        <div class="col-md-3">
-          <h5>Opening Hours</h5>
-          <ul class="list-unstyled">
-            <li>Monday: 9:00 - 22:00</li>
-            <li>Tuesday: 9:00 - 22:00</li>
-            <li>Wednesday: 9:00 - 22:00</li>
-            <li>Thursday: 9:00 - 22:00</li>
-            <li>Friday: 9:00 - 00:00</li>
-            <li>Saturday: 9:00 - 00:00</li>
-            <li>Sunday: 9:00 - 18:00</li>
-          </ul>
-        </div>
-
-        {/* <!-- Locations --> */}
-        <div class="col-md-3">
-          <h5>Locations</h5>
-          <ul class="list-unstyled">
-            <li>Location 1: 944 Glenholme Court, Tiffin, OH 44883</li>
-            <li>Location 2: 921 Schoolhouse Court, New Bern, NC 28560</li>
-          </ul>
-        </div>
-
-        {/* <!-- Menu --> */}
-        <div class="col-md-3">
-          <h5>Menu</h5>
-          <ul class="list-unstyled">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Reservation</a></li>
-            <li><a href="#">Our Pizza</a></li>
-            <li><a href="#">Your Order</a></li>
-            <li><a href="#">Checkout</a></li>
-          </ul>
-        </div>
-
-        {/* <!-- Contact --> */}
-        <div class="col-md-3">
-          <h5>Contact</h5>
-          <ul class="list-unstyled">
-            <li>Phone: 054 / 9923</li>
-            <li>Email: <a href="mailto:orders@pizzamuestra.com">orders@pizzamuestra.com</a></li>
-            <li>Follow us:</li>
-            <div class="social-icons">
-              <a href="#"><i class="bi bi-facebook"></i></a>
-              <a href="#"><i class="bi bi-twitter"></i></a>
-              <a href="#"><i class="bi bi-instagram"></i></a>
+      {/* Carousel Section */}
+      <div className="position-relative" style={{ width: "100vw" }}>
+        <div
+          id="carouselExampleIndicators"
+          className="carousel slide position-relative"
+          data-bs-ride="carousel"
+        >
+          <div className="carousel-indicators">
+            <button
+              type="button"
+              data-bs-target="#carouselExampleIndicators"
+              data-bs-slide-to="0"
+              className="active"
+              aria-current="true"
+              aria-label="Slide 1"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#carouselExampleIndicators"
+              data-bs-slide-to="1"
+              aria-label="Slide 2"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#carouselExampleIndicators"
+              data-bs-slide-to="2"
+              aria-label="Slide 3"
+            ></button>
+          </div>
+          <div className="carousel-inner">
+            <div className="carousel-item active">
+              <img
+                src="https://marketplace.canva.com/EAE-SiS5W84/1/0/1600w/canva-7Ci8Uk2hggo.jpg"
+                className="d-block w-100 responsive-img"
+                alt="Slide 1"
+              />
             </div>
-          </ul>
+            <div className="carousel-item">
+              <img
+                src="https://marketplace.canva.com/EAE7Gl2m6KA/1/0/1600w/canva-HJCZfYXaq5g.jpg"
+                className="d-block w-100 responsive-img"
+                alt="Slide 2"
+              />
+            </div>
+            <div className="carousel-item">
+              <img
+                src="https://marketplace.canva.com/EAFzYQMwynE/1/0/800w/canva-ZdEFpyg9ots.jpg"
+                className="d-block w-100 responsive-img"
+                alt="Slide 3"
+              />
+            </div>
+          </div>
+          <button
+            className="carousel-control-prev"
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="prev"
+          >
+            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span className="visually-hidden">Previous</span>
+          </button>
+          <button
+            className="carousel-control-next"
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="next"
+          >
+            <span className="carousel-control-next-icon" aria-hidden="true"></span>
+            <span className="visually-hidden">Next</span>
+          </button>
+        </div>
+
+        {/* Search Bar */}
+        <div className="search-box container position-absolute top-50 start-50 translate-middle">
+          <form className="d-flex position-relative">
+            <input
+              className="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+              value={search}
+              onChange={handleSearchChange}  // Update search state as user types
+            />
+          </form>
         </div>
       </div>
-
-      {/* <!-- Footer Copyright --> */}
-      <div class="text-center mt-4">
-        <p>&copy; 2018 Food. Built using WordPress and Mesmerize Theme.</p>
+      
+      {/* Food Categories Section */}
+      <div className="container mt-4">
+        {foodCat.map((data) => (
+          <div key={data._id} className="row mb-4">
+            <h4 className="fs-2 m-2">{data.category}</h4>
+            {/* <div className='container w-25'>
+              <hr
+                id="hr"
+                style={{
+                  height: "4px",
+                  backgroundImage: "radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(97,241,60,1) 32%, rgba(3,109,6,1) 100%)",
+                  border: "none",
+                }}
+              />
+            </div> */}
+            {foodItems
+              .filter(items =>
+                items.category === data.category &&
+                items.name.toLowerCase().includes(search.toLowerCase())  // Filter based on search
+              )
+              .map(filterItems => (
+                <div
+                  key={filterItems._id}
+                  className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 mb-4"
+                >
+                  <Card
+                    className="p-3"
+                    foodItem={filterItems}
+                    options={filterItems.options[0]}
+                    ImgSrc={filterItems.img}
+                    foodName={filterItems.name}
+                  />
+                </div>
+              ))
+            }
+          </div>
+        ))}
       </div>
-    </div>
-  </footer>
+
+      {/* Footer Section */}
+      <footer className="footer mt-5 py-4 bg-dark text-white">
+        <div className="container">
+          <div className="row">
+            <div className="col-12 col-md-3 mb-4">
+              <h5>Opening Hours</h5>
+              <ul className="list-unstyled">
+                <li>Monday: 9:00 - 22:00</li>
+                <li>Tuesday: 9:00 - 22:00</li>
+                <li>Wednesday: 9:00 - 22:00</li>
+                <li>Thursday: 9:00 - 22:00</li>
+                <li>Friday: 9:00 - 00:00</li>
+                <li>Saturday: 9:00 - 00:00</li>
+                <li>Sunday: 9:00 - 18:00</li>
+              </ul>
+            </div>
+            <div className="col-12 col-md-3 mb-4">
+              <h5>Locations</h5>
+              <ul className="list-unstyled">
+                <li>944 Glenholme Court, Tiffin, OH</li>
+                <li>921 Schoolhouse Court, New Bern, NC</li>
+              </ul>
+            </div>
+            <div className="col-12 col-md-3 mb-4">
+              <h5>Menu</h5>
+              <ul className="list-unstyled">
+                <li><a href="#" className="text-white text-decoration-none">Home</a></li>
+                <li><a href="#" className="text-white text-decoration-none">Reservation</a></li>
+                <li><a href="#" className="text-white text-decoration-none">Our Pizza</a></li>
+                <li><a href="#" className="text-white text-decoration-none">Your Order</a></li>
+                <li><a href="#" className="text-white text-decoration-none">Checkout</a></li>
+              </ul>
+            </div>
+            <div className="col-12 col-md-3 mb-4">
+              <h5>Contact</h5>
+              <ul className="list-unstyled">
+                <li>Phone: 054 / 9923</li>
+                <li>Email: <a href="mailto:orders@dinedashh.com" className="text-white text-decoration-none">orders@dinedashh.com</a></li>
+                <li>Follow us:</li>
+                <div className="d-flex gap-2 mt-2">
+                  <a href="#" className="text-white"><i className="bi bi-facebook"></i></a>
+                  <a href="#" className="text-white"><i className="bi bi-twitter"></i></a>
+                  <a href="#" className="text-white"><i className="bi bi-instagram"></i></a>
+                </div>
+              </ul>
+            </div>
+          </div>
+          <div className="text-center mt-4">
+            <p>&copy; 2024 DineDash. All Rights Reserved.</p>
+          </div>
+        </div>
+      </footer>
     </>
   );
 }
-
 
 export default HomePage;

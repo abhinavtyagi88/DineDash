@@ -44,7 +44,7 @@ const Sign = () => {
     setIsLoading(true);
     try {
       const response = await fetch(
-        process.env.REACT_APP_API_URL || 'http://localhost:5000/api/createuser',
+        process.env.REACT_APP_API_URL || 'https://dinedash-64ou.onrender.com/api/createuser',
         {
           method: 'POST',
           headers: {

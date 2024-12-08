@@ -11,21 +11,17 @@ require('dotenv').config();
 
 app.use(express.json());
 
-
-
 app.use(cors());
 
 // let corsOptions = { 
 //     origin : ['http://localhost:3000'], 
 //  } 
 
-
-// app.use(cors());
 //  app.use(cors(corsOptions)) 
 
 app.use('/api',require('./router/createUser.js'))
 app.use('/api',require('./router/DisplayData.js'))
-
+app.use('/api',require('./router/Order.js'))
 
 
 // app.get('/',(rer,res)=>{

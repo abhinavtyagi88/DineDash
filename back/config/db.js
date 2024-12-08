@@ -11,9 +11,7 @@ async function connectToMongoDB() {
 
         console.log("DATABASE CONNECTED");
 
-        
         const fetchData = await mongoose.connection.db.collection("food_items").find({}).toArray();
-        
 
         // Set the global data variable
         global.food_items = fetchData;

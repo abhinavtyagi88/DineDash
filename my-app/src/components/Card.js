@@ -4,20 +4,19 @@ import { useNavigate } from 'react-router-dom'
 import { useDispatchCart, useCart } from './ContextReducer'
 export default function Card(props) {
   const myButton = {
-    backgroundImage: 'linear-gradient(to right top, #093028, #237A57)',
+    background: "linear-gradient(90deg, rgba(68,167,53,1) 0%, rgba(134,247,118,1) 78%, rgba(33,160,14,1) 100%",
     color:'white'
   };
+  const foodCardStyle  ={
+    color :"red"
+  }
   let data = useCart();
 
   let navigate = useNavigate()
   const [qty, setQty] = useState(1)
   const [size, setSize] = useState("")
   const priceRef = useRef();
-  // const [btnEnable, setBtnEnable] = useState(false);
-  // let totval = 0
-  // let price = Object.values(options).map((value) => {
-  //   return parseInt(value, 10);
-  // });
+ 
   let option = props.options;
   let priceOptions = Object.keys(option);
   let foodItem = props.foodItem;
@@ -62,7 +61,6 @@ export default function Card(props) {
     console.log(data);
     
 
-    // setBtnEnable(true)
 
   }
 
@@ -70,22 +68,18 @@ export default function Card(props) {
     setSize(priceRef.current.value)
   }, [])
 
-  // useEffect(()=>{
-  // checkBtn();
-  //   },[data])
+ 
 
   let finalPrice = qty * parseInt(option[size]);   //This is where Price is changing
-  // totval += finalPrice;
-  // console.log(totval)
+ 
   return (
     <div>
 
-      <div className="card mt-3" style={{ width: "16rem", maxHeight: "360px" }}>
+      <div className="card mt-3" style={{ width: "14rem", maxHeight: "360px" }}>
         <img src={props.ImgSrc} className="card-img-top" alt="..." style={{ height: "120px", objectFit: "fill" }} />
-        <div className="card-body">
+        <div className="card-body" style={foodCardStyle}>
           <h5 className="card-title">{props.foodName}</h5>
-          {/* <p className="card-text">This is some random text. This is description.</p> */}
-          <div className=' w-100 p-0' style={{ height: "38px" }}>
+          <div className=' w-100 p-0' style={{myButton }}>
             <select className="m-2 h-100 w-20 text-dark rounded" style={myButton } onClick={handleClick} onChange={handleQty}>
               {Array.from(Array(6), (e, i) => {
                 return (
@@ -97,12 +91,12 @@ export default function Card(props) {
                 return <option key={i} value={i}>{i}</option>
               })}
             </select>
-            <div className=' d-inline ms-2 h-100 fs-5' style={{color:"tomato", }} >
+            <div className=' d-inline m-1 h-100 fs-5' style={{color:"tomato" }} >
               ₹{finalPrice}/-
             </div>
           </div>
           <hr></hr>
-          <button className={`btn justify-center ms-2 `} style={myButton} onClick={handleAddToCart}>Add to Cart</button>
+          <button className={`justify-center ms-2 `} style={myButton} onClick={handleAddToCart}>Add to Cart</button>
           {/* <button className={`btn btn-danger justify-center ms-2 ${btnEnable ? "" : "disabled"}`} onClick={handleRemoveCart}>Remove</button> */}
         </div>
       </div>

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-// Define the schema for your data
+// Define the schema for users
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -20,9 +20,9 @@ const userSchema = new mongoose.Schema({
     required: true
   },
   date: {
-     type: Date,
-     default: Date.now 
-    }
+    type: Date,
+    default: Date.now
+  }
 });
 
 // Create a model based on the schema

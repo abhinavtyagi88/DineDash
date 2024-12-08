@@ -1,0 +1,43 @@
+/* Responsive image height for carousel */
+.responsive-img {
+  height: 80vh;
+}
+
+@media (max-width: 768px) {
+  .responsive-img {
+      height: 60vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .responsive-img {
+      height: 50vh;
+  }
+}
+
+/* Centering search box and adjusting spacing */
+.search-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 25vh; /* Move the search box 20vh down */
+}
+
+.search-box form {
+  width: 100%;
+  max-width: 600px; /* Restrict form width */
+  padding: 10px;
+}
+
+@media (max-width: 768px) {
+  .search-box form {
+      max-width: 80%;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-box form {
+      max-width: 90%;
+  }
+}

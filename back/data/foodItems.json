@@ -1,0 +1,216 @@
+
+[
+  {
+    "_id": "66e50f059810385c6b715b48",
+    "category": "Snack",
+    "name": "Vada Pav",
+    "img": "https://assets.bonappetit.com/photos/627bf84a4f1dbc1baea0c973/3:2/w_4803,h_3202,c_limit/0511-vada-pav-recipe-lede.jpg",
+    "options": [
+      {
+        "half": "25"
+      },
+      {
+        "full": "40"
+      }
+    ],
+    "description": "Spicy potato fritter served in a bun with chutneys."
+  },
+  {
+    "_id": "66e50f059810385c6b715b49",
+    "category": "Snack",
+    "name": "Samosa",
+    "img": "https://dwellbymichelle.com/wp-content/uploads/2021/03/DWELL-Samosa-Recipe.jpeg",
+    "options": [
+      {
+        "single": "20"
+      },
+      {
+        "plate": "50"
+      }
+    ],
+    "description": "Crispy pastry filled with spiced potatoes and peas."
+  },
+  {
+    "_id": "66e50f059810385c6b715b4a",
+    "category": "Main Course",
+    "name": "Paneer Tikka",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXoTAYCEJDDgmeaGi3es7xTscdGJmG0gFlbw&s",
+    "options": [
+      {
+        "small": "150"
+      },
+      {
+        "large": "250"
+      }
+    ],
+    "description": "Marinated paneer cubes grilled to perfection."
+  },
+  {
+    "_id": "66e50f059810385c6b715b4b",
+    "category": "Main Course",
+    "name": "Curry Sauce",
+    "img": "https://www.indianhealthyrecipes.com/wp-content/uploads/2023/08/paneer-pasanda-1024x1536.webp",
+    "options": [
+      {
+        "small": "200"
+      },
+      {
+        "large": "350"
+      }
+    ],
+    "description": "Spicy chicken curry cooked in a rich tomato-based sauce."
+  },
+  {
+    "_id": "66e50f059810385c6b715b4c",
+    "category": "Main Course",
+    "name": "Sambar",
+    "img": "https://www.indianhealthyrecipes.com/wp-content/uploads/2021/05/sambar-recipe-1024x1536.webp",
+    "options": [
+      {
+        "plate": "120"
+      }
+    ],
+    "description": "Spicy chickpeas served with deep-fried bread."
+  },
+  {
+    "_id": "66e50f059810385c6b715b4d",
+    "category": "Dessert",
+    "name": "Gulab Jamun",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTU1-nAC5iLJYDuZJhyK0UG11gxTBBOJz02Cg&s",
+    "options": [
+      {
+        "single": "30"
+      },
+      {
+        "plate": "100"
+      }
+    ],
+    "description": "Sweet dough balls soaked in rose-flavored sugar syrup."
+  },
+  {
+    "_id": "66e50f059810385c6b715b4e",
+    "category": "Dessert",
+    "name": "Jalebi",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfvq9sRbc7Eirdq5OHdq1KVWyHYYBp3Gonxg&s",
+    "options": [
+      {
+        "single": "20"
+      },
+      {
+        "plate": "80"
+      }
+    ],
+    "description": "Crispy and sweet fried dough in a spiral shape."
+  },
+  {
+    "_id": "66e50f059810385c6b715b4f",
+    "category": "Snack",
+    "name": "Pani Puri",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkKgUan9wRAUeZrhBkIp468PHcsMr-lKDptg&s",
+    "options": [
+      {
+        "plate": "50"
+      }
+    ],
+    "description": "Crispy puris filled with spicy tamarind water and potatoes."
+  },
+  {
+    "_id": "66e50f059810385c6b715b50",
+    "category": "Main Course",
+    "name": "Dal makhani",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4GfJo92Nr_qva-lOrSWb1rVfTqhNNYcbrXQ&s",
+    "options": [
+      {
+        "small": "220"
+      },
+      {
+        "large": "400"
+      }
+    ],
+    "description": "Creamy and flavorful chicken cooked in a buttery tomato sauce."
+  },
+  {
+    "_id": "66e50f059810385c6b715b51",
+    "category": "Main Course",
+    "name": "Veg Biryani",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaeBlIywcv4RMaVlvzAk-ygkpjyiX0juwM6Q&s",
+    "options": [
+      {
+        "small": "180"
+      },
+      {
+        "large": "350"
+      }
+    ],
+    "description": "Fragrant rice dish with spiced meat or vegetables."
+  },
+  {
+    "_id": "66e50f059810385c6b715b52",
+    "category": "Main Course",
+    "name": "Chilli Paneer:",
+    "img": "https://clubmahindra.gumlet.io/blog/images/chillipane-cbc15f3daaee08a-resized.jpg?w=576&dpr=1.3",
+    "options": [
+      {
+        "small": "150"
+      },
+      {
+        "large": "300"
+      }
+    ],
+    "description": "Creamy black lentils cooked with spices."
+  },
+  {
+    "_id": "66e50f059810385c6b715b53",
+    "category": "Snack",
+    "name": "Aloo Tikki",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQy5Uv6rZTLiXXI1-Ain-58v2RcNJAhyzIW7Q&s",
+    "options": [
+      {
+        "single": "30"
+      },
+      {
+        "plate": "100"
+      }
+    ],
+    "description": "Spicy potato patties served with chutneys."
+  },
+  {
+    "_id": "66e50f059810385c6b715b54",
+    "category": "Snack",
+    "name": "Dhokla",
+    "img": "https://www.cookwithnabeela.com/wp-content/uploads/2024/02/KhamanDhokla1.webp",
+    "options": [
+      {
+        "plate": "60"
+      }
+    ],
+    "description": "Steamed savory cake made from fermented rice and chickpea batter."
+  },
+  {
+    "_id": "66e50f059810385c6b715b55",
+    "category": "Dessert",
+    "name": "Rasgulla",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ82C_Ye1vRNAqPWJtio1H-47eiPw1yAIUncw&s",
+    "options": [
+      {
+        "single": "25"
+      },
+      {
+        "plate": "90"
+      }
+    ],
+    "description": "Soft and spongy sweet cheese balls soaked in syrup."
+  },
+  {
+    "_id": "66e50f059810385c6b715b56",
+    "category": "Snack",
+    "name": "Pakora",
+    "img": "https://images.services.kitchenstories.io/I1J1RunmQ7cK6OjgqkyO5GK1_6o=/3840x0/filters:quality(80)/images.kitchenstories.io/wagtailOriginalImages/R2386-photo-final-3.jpg",
+    "options": [
+      {
+        "plate": "70"
+      }
+    ],
+    "description": "Deep-fried fritters made with vegetables and gram flour."
+  }
+]

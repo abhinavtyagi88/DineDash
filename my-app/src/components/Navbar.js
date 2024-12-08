@@ -27,7 +27,7 @@ export default function Navbar(props) {
             <nav className="navbar navbar-expand-lg navbar-dark bg-success  fixed-top"
                 style={{ boxShadow: "0px 10px 20px black", filter: 'blur(20)', position: "fixed", zIndex: "10", width: "100%" }}>
                 <div className="container-fluid">
-                    <Link className="navbar-brand fs-1 fst-italic" to="/">GoFood</Link>
+                    <Link className="navbar-brand fs-1 fst-italic" to="/">DineDashh</Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
@@ -50,7 +50,7 @@ export default function Navbar(props) {
 
                                 <div className="btn bg-white text-success mx-2" onClick={loadCart}>
                                     <img src="https://cdn-icons-png.flaticon.com/512/9617/9617053.png" style={{height:'20px', padding:'3px'}}/>
-                                <span class="badge" style={{color:'darkblue', background:'#C7FFD8'}}> {items.length}</span>
+                                <span className="badge" style={{color:'darkblue', background:'#C7FFD8'}}> {items.length}</span>
 
                                 </div>
 
