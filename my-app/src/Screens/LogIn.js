@@ -23,7 +23,7 @@ const LogIn = () => {
     try {
       const response = await axios.post('http://localhost:5000/api/login', formData);
   
-      console.log('API Response:', response.data); // Log the entire response
+      // console.log('API Response:', response.data); // Log the entire response
   
       const { authToken, user } = response.data; // Assuming the API returns 'authToken'
   
@@ -31,7 +31,7 @@ const LogIn = () => {
       localStorage.setItem('token', authToken);
       localStorage.setItem('userEmail', formData.email);  // Corrected line: use formData.email
       
-      console.log("Token saved:", authToken);
+      // console.log("Token saved:", authToken);
   
       setMessage('LogIn successful!');
       navigate('/');  // Redirect to the homepage or dashboard

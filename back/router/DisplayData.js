@@ -6,7 +6,7 @@ router.get('/foodData', (req, res) => {
         if (!global.food_items || !global.category) {
             return res.status(500).send("Food data not loaded yet.");
         }
-        console.log(global.food_items);
+        // console.log(global.food_items);
         
         res.send([global.food_items,global.category]); // Sending the data directly
     } catch (error) {
