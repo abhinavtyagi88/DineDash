@@ -21,7 +21,7 @@ const LogIn = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('https://localhost:5000/api/login', formData);
+      const response = await axios.post('http://localhost:5000/api/login', formData);
   
       console.log('API Response:', response.data); // Log the entire response
   

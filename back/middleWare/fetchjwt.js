@@ -1,24 +1,20 @@
-var jwt = require('jsonwebtoken');
-const jwtSecret = "HaHa"
-const fetchjwt = (req,res,next)=>{
-    // get the user from the jwt token and add id to req object
+const jwt = require('jsonwebtoken');
+const JWT_SECRET = 'HaHa'; // Replace with your secret
+
+const fetchjwt = (req, res, next) => {
     const token = req.header('Authorization');
-
-    console.log("TOKEN",token);
     
-    if(!token){
-        res.status(401).send({error:"Invalid Auth Token"})
-
+    if (!token) {
+        return res.status(401).json({ success: false, message: 'Access Denied: No token provided' });
     }
     try {
-        const data = jwt.verify(token,jwtSecret);
-        req.user = data.user
+        const verified = jwt.verify(token, JWT_SECRET);
+        console.log("NOT FOUND");
+        req.user = verified; // Attach user data
         next();
-        console.log("JWT")
-        
-    } catch (error) {
-        res.status(401).send({error:"Invalid Auth Token"})
+    } catch (err) {
+        res.status(401).json({ success: false, message: 'Invalid Token' });
     }
+};
 
-}
-module.exports = fetchjwt
+module.exports = fetchjwt;
