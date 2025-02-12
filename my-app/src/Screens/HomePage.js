@@ -112,6 +112,8 @@ function HomePage() {
             <span className="visually-hidden">Next</span>
           </button>
         </div>
+          <br></br>
+          <br></br>
 
         {/* Search Bar */}
         <div className="search-box container position-absolute top-50 start-50 translate-middle">
@@ -169,7 +171,7 @@ function HomePage() {
 
       {/* Footer Section */}
       <footer className="footer mt-5 py-4 bg-dark text-white">
-        <div className="container">
+        <div className="footer-container m-5">
           <div className="row">
             <div className="col-12 col-md-3 mb-4">
               <h5>Opening Hours</h5>
@@ -215,7 +217,7 @@ function HomePage() {
             </div>
           </div>
           <div className="text-center mt-4">
-            <p>&copy; 2024 DineDash. All Rights Reserved.</p>
+            <p>&copy; 2025 DineDash. All Rights Reserved.</p>
           </div>
         </div>
       </footer>
