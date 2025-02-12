@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const Sign = () => {
   const navigate = useNavigate();
@@ -9,8 +10,10 @@ const Sign = () => {
     password: '',
     location: ''
   });
+
   const [message, setMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleChange = (e) => {
     setFormData({
@@ -44,22 +47,15 @@ const Sign = () => {
     setIsLoading(true);
     try {
       const response = await fetch(
-        process.env.REACT_APP_API_URL || 'https://dinedash-64ou.onrender.com/api/createuser',
+         'https://dinedash-64ou.onrender.com/api/createuser',
         {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(formData)
         }
       );
 
       const data = await response.json();
-
-      console.log(formData);
-      
-      console.log(response);
-      
 
       if (response.ok) {
         setMessage('User created successfully!');
@@ -68,7 +64,6 @@ const Sign = () => {
         setMessage(data.error || 'Error creating user.');
       }
     } catch (error) {
-      console.error(error);
       setMessage('Error creating user.');
     } finally {
       setIsLoading(false);
@@ -76,7 +71,7 @@ const Sign = () => {
   };
 
   return (
-    <div className="container mt-5">
+    <div className="signup-container mt-5">
       <div className="row justify-content-center">
         <div className="col-md-6">
           <div className="card shadow-lg">
@@ -110,17 +105,27 @@ const Sign = () => {
                     required
                   />
                 </div>
+                {/* Password with Eye Button (Fixed) */}
                 <div className="mb-3">
                   <label htmlFor="password" className="form-label">Password:</label>
-                  <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    className="form-control"
-                    value={formData.password}
-                    onChange={handleChange}
-                    required
-                  />
+                  <div className="position-relative">
+                    <input
+                      type={showPassword ? 'text' : 'password'}
+                      id="password"
+                      name="password"
+                      className="form-control"
+                      value={formData.password}
+                      onChange={handleChange}
+                      required
+                    />
+                    <span
+                      className="position-absolute top-50 end-0 translate-middle-y me-3"
+                      style={{ cursor: "pointer" }}
+                      onClick={() => setShowPassword(!showPassword)}
+                    >
+                      {showPassword ? <FaEyeSlash /> : <FaEye />}
+                    </span>
+                  </div>
                 </div>
                 <div className="mb-3">
                   <label htmlFor="location" className="form-label">Location:</label>

@@ -83,6 +83,7 @@ router.post('/login', [
         const authToken = jwt.sign({ user: { id: user.id } }, jwtSecret, { expiresIn: '1h' });
         success = true;
         res.json({ success, authToken });
+        console.log("LOGGED");
     } catch (err) {
         console.error(err.message);
         res.status(500).json({ success, error: "Internal server error." });

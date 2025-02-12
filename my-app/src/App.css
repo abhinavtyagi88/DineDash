@@ -17,3 +17,25 @@ body {
   padding: 2rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
+.login-container {
+  /* background-image: url(./assets/image.png); */
+  /* background-color: rgba(255, 255, 255, 0.9); Slight white overlay for readability */
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.signup-container {
+  /* background-image: url(./assets/image.png); */
+  /* background-color: rgba(255, 255, 255, 0.9); Slight white overlay for readability */
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  color: black;
+}
+
+.bold-black{
+  font-weight: bold;
+  color: black;
+}

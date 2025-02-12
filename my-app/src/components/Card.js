@@ -4,9 +4,15 @@ import { useNavigate } from 'react-router-dom'
 import { useDispatchCart, useCart } from './ContextReducer'
 export default function Card(props) {
   const myButton = {
-    background: "linear-gradient(90deg, rgba(68,167,53,1) 0%, rgba(134,247,118,1) 78%, rgba(33,160,14,1) 100%",
-    color:'white'
+    background: "linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1)",
+    color: "white",
+    // padding: "10px 20px",
+    fontSize: "16px", // Uncomment if needed
+    border: "none",
+    borderRadius: "50px", // Adjust for more/less curve
+    cursor: "pointer"
   };
+  
   const foodCardStyle  ={
     color :"red"
   }
