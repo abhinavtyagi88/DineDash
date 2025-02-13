@@ -4,12 +4,13 @@ import { useNavigate } from 'react-router-dom'
 import { useDispatchCart, useCart } from './ContextReducer'
 export default function Card(props) {
   const myButton = {
-    background: "linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1)",
-    color: "white",
+    background: "#91f7b0",
+    color: "red",
     // padding: "10px 20px",
     fontSize: "16px", // Uncomment if needed
     border: "none",
-    borderRadius: "50px", // Adjust for more/less curve
+    fontWeight: "bold",
+    borderRadius: "5px", // Adjust for more/less curve
     cursor: "pointer"
   };
   
@@ -81,18 +82,18 @@ export default function Card(props) {
   return (
     <div>
 
-      <div className="card mt-3" style={{ width: "14rem", maxHeight: "360px" }}>
+      <div className="card mt-3 w-56 max-h-[360px] border-4 border-black" style={{ width: "14rem", maxHeight: "360px" ,borderColor:"black",borderRadius:"10px" }}>
         <img src={props.ImgSrc} className="card-img-top" alt="..." style={{ height: "120px", objectFit: "fill" }} />
         <div className="card-body" style={foodCardStyle}>
           <h5 className="card-title">{props.foodName}</h5>
           <div className=' w-100 p-0' style={{myButton }}>
-            <select className="m-2 h-100 w-20 text-dark rounded" style={myButton } onClick={handleClick} onChange={handleQty}>
+            <select className="m-1 h-100 w-20 text-dark rounded" style={myButton } onClick={handleClick} onChange={handleQty}>
               {Array.from(Array(6), (e, i) => {
                 return (
                   <option key={i + 1} value={i + 1}>{i + 1}</option>)
               })}
             </select>
-            <select className="m-2 h-100 w-20 text-dark rounded" style={myButton } ref={priceRef} onClick={handleClick} onChange={handleOptions}>
+            <select className="m-1 h-100 w-20 text-dark rounded" style={myButton } ref={priceRef} onClick={handleClick} onChange={handleOptions}>
               {priceOptions.map((i) => {
                 return <option key={i} value={i}>{i}</option>
               })}

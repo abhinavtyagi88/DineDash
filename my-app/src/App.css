@@ -1,11 +1,11 @@
 /* src/App.css or a specific CSS file */
 body {
-  background: url('./assets/resturantBackground.png') no-repeat center center fixed;
+  background: url('./assets/back.png') no-repeat center center fixed;
   background-size: cover;
   min-height: 100vh;
   margin: 0;
   padding: 0;
-  color: linen;
+  color: rgb(233, 148, 63);
 }
 
 

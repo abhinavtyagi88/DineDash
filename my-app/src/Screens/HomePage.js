@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from "react-router-dom";
 import Navbar from '../components/Navbar';
 import Card from '../components/Card';
 import './HomePage.css'; // Custom CSS for the homepage
@@ -39,7 +40,7 @@ function HomePage() {
 
   return (
     <>
-      <Navbar />
+      <Navbar search={search} setSearch={setSearch} />
       
       {/* Carousel Section */}
       <div className="position-relative" style={{ width: "100vw" }}>
@@ -125,6 +126,7 @@ function HomePage() {
               aria-label="Search"
               value={search}
               onChange={handleSearchChange}  // Update search state as user types
+              onBlur={() => setSearch('')}
             />
           </form>
         </div>
@@ -155,7 +157,7 @@ function HomePage() {
                   key={filterItems._id}
                   className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 mb-4"
                 >
-                  <Card
+                  <Card 
                     className="p-3"
                     foodItem={filterItems}
                     options={filterItems.options[0]}
@@ -195,11 +197,11 @@ function HomePage() {
             <div className="col-12 col-md-3 mb-4">
               <h5>Menu</h5>
               <ul className="list-unstyled">
-                <li><a href="#" className="text-white text-decoration-none">Home</a></li>
-                <li><a href="#" className="text-white text-decoration-none">Reservation</a></li>
-                <li><a href="#" className="text-white text-decoration-none">Our Pizza</a></li>
-                <li><a href="#" className="text-white text-decoration-none">Your Order</a></li>
-                <li><a href="#" className="text-white text-decoration-none">Checkout</a></li>
+                <li><Link to="#" className="text-white text-decoration-none">Home</Link></li>
+                <li><Link to="#" className="text-white text-decoration-none">Reservation</Link></li>
+                <li><Link to="#" className="text-white text-decoration-none">Our Pizza</Link></li>
+                <li><Link to="#" className="text-white text-decoration-none">Your Order</Link></li>
+                <li><Link to="#" className="text-white text-decoration-none">Checkout</Link></li>
               </ul>
             </div>
             <div className="col-12 col-md-3 mb-4">
