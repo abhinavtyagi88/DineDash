@@ -16,4 +16,16 @@ footer{
   .footer .social-icons i {
     margin-right: 10px;
   }
+.home-container{
+  margin-left: 10vw;
+  margin-right: 10vw;
+
+}
+.category{
+  background-color:rgba(0, 0, 0, 0.255) ;
+  font-size: 40px;
+  color: #f52f49;
+  padding-bottom: 3px;
+
+}
   

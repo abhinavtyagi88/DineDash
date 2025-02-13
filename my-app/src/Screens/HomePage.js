@@ -133,10 +133,14 @@ function HomePage() {
       </div>
       
       {/* Food Categories Section */}
-      <div className="container mt-4">
+      <div className="home-container ">
         {foodCat.map((data) => (
           <div key={data._id} className="row mb-4">
-            <h4 className="fs-2 m-2">{data.category}</h4>
+            <h4 className="fs-2 m-2 category">
+              <center>
+                {data.category}
+              </center>
+            </h4>
             {/* <div className='container w-25'>
               <hr
                 id="hr"
@@ -211,9 +215,9 @@ function HomePage() {
                 <li>Email: <a href="mailto:orders@dinedashh.com" className="text-white text-decoration-none">orders@dinedashh.com</a></li>
                 <li>Follow us:</li>
                 <div className="d-flex gap-2 mt-2">
-                  <a href="#" className="text-white"><i className="bi bi-facebook"></i></a>
-                  <a href="#" className="text-white"><i className="bi bi-twitter"></i></a>
-                  <a href="#" className="text-white"><i className="bi bi-instagram"></i></a>
+                  <Link to="#" className="text-white"><i className="bi bi-facebook"></i></Link>
+                  <Link to="#" className="text-white"><i className="bi bi-twitter"></i></Link>
+                  <Link to="#" className="text-white"><i className="bi bi-instagram"></i></Link>
                 </div>
               </ul>
             </div>
